@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Francisco Benitez — Full Stack Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@700&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     :root {
       --black: #0a0a0a;
       --white: #f0ede6;
@@ -15,401 +25,1061 @@
       --gray2: #2a2a2a;
       --muted: #666;
       --accent: #c8f000;
-      --border: rgba(240,237,230,0.12);
+      --border: rgba(240, 237, 230, 0.12);
       --f-display: 'Bebas Neue', sans-serif;
       --f-cond: 'Barlow Condensed', sans-serif;
       --f-body: 'Barlow', sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: var(--f-body); font-weight: 300; font-size: 16px; line-height: 1.6; overflow-x: hidden; cursor: crosshair; }
-    a { color: inherit; text-decoration: none; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 60px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-    .nav-logo { font-family: var(--f-display); font-size: 1.5rem; letter-spacing: 0.05em; color: var(--white); }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 400; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cta { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid var(--white); padding: 0.45rem 1rem; color: var(--white); font-weight: 400; transition: background 0.2s, color 0.2s; }
-    .nav-cta:hover { background: var(--white); color: var(--black); }
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-    .nav-toggle span { display: block; width: 22px; height: 1px; background: var(--white); margin: 6px 0; transition: all 0.3s; }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--f-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid var(--white);
+      padding: 0.45rem 1rem;
+      color: var(--white);
+      font-weight: 400;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--white);
+      margin: 6px 0;
+      transition: all 0.3s;
+    }
 
     /* TICKER */
-    .ticker-wrap { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; height: 36px; background: var(--accent); overflow: hidden; display: flex; align-items: center; }
-    .ticker-track { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; }
-    .ticker-track span { font-family: var(--f-display); font-size: 0.85rem; letter-spacing: 0.12em; color: var(--black); padding: 0 2rem; }
-    .ticker-track span.sep { color: rgba(0,0,0,0.4); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-wrap {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 36px;
+      background: var(--accent);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-track span {
+      font-family: var(--f-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      padding: 0 2rem;
+    }
+
+    .ticker-track span.sep {
+      color: rgba(0, 0, 0, 0.4);
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
 
     /* HERO */
-    #inicio { min-height: 100vh; padding: 60px 2.5rem 80px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
-    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
-    .hero-name { font-family: var(--f-display); font-size: clamp(5rem, 16vw, 15rem); line-height: 0.9; letter-spacing: -0.01em; color: var(--white); margin-bottom: 0.1em; }
-    .hero-title-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1.5rem; }
-    .hero-role { font-family: var(--f-display); font-size: clamp(1.8rem, 5vw, 3.5rem); color: var(--accent); letter-spacing: 0.05em; }
-    .hero-desc { max-width: 380px; font-size: 0.88rem; color: var(--muted); line-height: 1.8; text-align: right; }
-    .hero-photo-frame { position: absolute; top: 80px; right: 2.5rem; width: 220px; }
-    .hero-photo-frame img, .hero-photo-placeholder { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; filter: grayscale(100%) contrast(1.1); }
-    .hero-photo-placeholder { background: var(--gray); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
-    .hero-photo-frame::after { content: 'ARG — 2026'; display: block; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); margin-top: 0.5rem; }
-    .num-tag { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); font-weight: 400; }
+    #inicio {
+      min-height: 100vh;
+      padding: 100px 2.5rem 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-family: var(--f-display);
+      font-size: clamp(4rem, 8vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 0.1em;
+    }
+
+    .hero-title-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-role {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .hero-desc {
+      max-width: 100%;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .hero-photo-col {
+      width: 100%;
+      height: 75vh;
+      position: relative;
+      display: flex;
+    }
+
+    .hero-photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+      background: var(--gray);
+    }
+
+    .num-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      font-weight: 400;
+    }
 
     /* SECTIONS */
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 3rem; }
-    .section-title { font-family: var(--f-display); font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: 0.02em; line-height: 1; }
-    section.main-section { padding: 6rem 2.5rem 6rem; max-width: 1200px; margin: 0 auto; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    section.main-section {
+      padding: 6rem 2.5rem 6rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     /* SOBRE */
-    .sobre-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
-    .sobre-big-text { font-family: var(--f-cond); font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.25; font-weight: 700; text-transform: uppercase; }
-    .sobre-big-text em { font-style: italic; color: var(--accent); font-family: var(--f-body); font-weight: 300; font-size: 0.7em; text-transform: none; }
-    .sobre-details p { font-size: 0.88rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.9; }
-    .sobre-details p strong { color: var(--white); font-weight: 600; }
-    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); margin-top: 4rem; }
-    .stat-item { padding: 1.8rem 1.5rem; border-right: 1px solid var(--border); }
-    .stat-item:last-child { border-right: none; }
-    .stat-item .n { font-family: var(--f-display); font-size: 3.5rem; color: var(--accent); display: block; line-height: 1; margin-bottom: 0.3rem; }
-    .stat-item .l { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .sobre-big-text {
+      font-family: var(--f-cond);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.25;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .sobre-big-text em {
+      font-style: italic;
+      color: var(--accent);
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 0.7em;
+      text-transform: none;
+    }
+
+    .sobre-details p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.9;
+    }
+
+    .sobre-details p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    .stat-item {
+      padding: 1.8rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-item .n {
+      font-family: var(--f-display);
+      font-size: 3.5rem;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-item .l {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
     /* SKILLS TABLE */
-    .skills-table { width: 100%; border-collapse: collapse; }
-    .skills-table tr { border-bottom: 1px solid var(--border); cursor: default; transition: background 0.15s; }
-    .skills-table tr:hover { background: var(--gray); }
-    .skills-table tr:first-child { border-top: 1px solid var(--border); }
-    .skills-table td { padding: 1.4rem 0; vertical-align: middle; }
-    .td-num { width: 60px; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.15em; }
-    .td-cat { font-family: var(--f-display); font-size: 2rem; letter-spacing: 0.05em; padding-right: 2rem; }
-    .td-tags { text-align: right; }
-    .td-tags span { display: inline-block; margin-left: 0.5rem; padding: 0.25rem 0.65rem; border: 1px solid var(--border); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .skills-table tr:hover .td-cat { color: var(--accent); }
-    .skills-table tr:hover .td-tags span { border-color: var(--accent); color: var(--white); }
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .skills-table tr {
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+      transition: background 0.15s;
+    }
+
+    .skills-table tr:hover {
+      background: var(--gray);
+    }
+
+    .skills-table tr:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .skills-table td {
+      padding: 1.4rem 0;
+      vertical-align: middle;
+    }
+
+    .td-num {
+      width: 60px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+    }
+
+    .td-cat {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      padding-right: 2rem;
+    }
+
+    .td-tags {
+      text-align: right;
+    }
+
+    .td-tags span {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .skills-table tr:hover .td-cat {
+      color: var(--accent);
+    }
+
+    .skills-table tr:hover .td-tags span {
+      border-color: var(--accent);
+      color: var(--white);
+    }
 
     /* PROYECTOS */
-    .project-row { display: grid; grid-template-columns: 60px 1fr 220px 60px auto; align-items: center; gap: 2rem; padding: 1.8rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; }
-    .project-row:first-child { border-top: 1px solid var(--border); }
-    .project-row:hover { background: var(--gray); }
-    .project-row:hover .proj-num { color: var(--accent); }
-    .project-row:hover .proj-arrow { transform: translateX(6px); color: var(--accent); }
-    .proj-num { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--muted); transition: color 0.2s; }
-    .proj-name { font-family: var(--f-display); font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: 0.02em; line-height: 1; }
-    .proj-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
-    .proj-tech { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
-    .proj-tech span { padding: 0.2rem 0.6rem; border: 1px solid var(--border); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .proj-arrow { font-size: 1.5rem; transition: transform 0.2s, color 0.2s; }
-    .proj-preview { position: fixed; pointer-events: none; width: 260px; aspect-ratio: 16/10; object-fit: cover; filter: grayscale(80%); z-index: 50; opacity: 0; transition: opacity 0.2s; border: 1px solid var(--border); }
+    .project-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 220px 60px auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+
+    .project-row:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-row:hover {
+      background: var(--gray);
+    }
+
+    .project-row:hover .proj-num {
+      color: var(--accent);
+    }
+
+    .project-row:hover .proj-arrow {
+      transform: translateX(6px);
+      color: var(--accent);
+    }
+
+    .proj-num {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .proj-name {
+      font-family: var(--f-display);
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .proj-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .proj-tech {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .proj-tech span {
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .proj-arrow {
+      font-size: 1.5rem;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .proj-preview {
+      position: fixed;
+      pointer-events: none;
+      width: 260px;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      filter: grayscale(80%);
+      z-index: 50;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border: 1px solid var(--border);
+    }
 
     /* REDES */
-    .redes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
-    .red-tile { background: var(--black); padding: 3rem 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; text-decoration: none; color: inherit; transition: background 0.2s; }
-    .red-tile:hover { background: var(--gray); }
-    .red-tile:hover .red-name { color: var(--accent); }
-    .red-platform { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
-    .red-name { font-family: var(--f-display); font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.02em; line-height: 1; transition: color 0.2s; }
-    .red-handle { font-size: 0.8rem; color: var(--muted); }
-    .red-arrow { margin-left: auto; font-size: 2rem; color: var(--muted); transition: color 0.2s, transform 0.2s; }
-    .red-tile:hover .red-arrow { color: var(--accent); transform: translate(4px,-4px); }
+    .redes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .red-tile {
+      background: var(--black);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+
+    .red-tile:hover {
+      background: var(--gray);
+    }
+
+    .red-tile:hover .red-name {
+      color: var(--accent);
+    }
+
+    .red-platform {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .red-name {
+      font-family: var(--f-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .red-handle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .red-arrow {
+      margin-left: auto;
+      font-size: 2rem;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .red-tile:hover .red-arrow {
+      color: var(--accent);
+      transform: translate(4px, -4px);
+    }
 
     /* CONTACTO */
-    .contacto-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-    .contacto-left h3 { font-family: var(--f-display); font-size: clamp(3rem, 7vw, 6rem); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1.5rem; }
-    .contacto-left h3 span { color: var(--accent); }
-    .contacto-left p { font-size: 0.85rem; color: var(--muted); max-width: 320px; line-height: 1.9; }
-    .form-group { margin-bottom: 1.2rem; }
-    .form-label { display: block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
-    input[type="text"], input[type="email"], textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border); color: var(--white); font-family: var(--f-body); font-weight: 300; font-size: 0.9rem; padding: 0.85rem 0; outline: none; transition: border-color 0.2s; resize: none; }
-    input:focus, textarea:focus { border-color: var(--accent); }
-    input::placeholder, textarea::placeholder { color: var(--muted); }
-    textarea { min-height: 100px; }
-    .btn-send { display: inline-flex; align-items: center; gap: 1rem; margin-top: 1.5rem; background: var(--accent); color: var(--black); border: none; font-family: var(--f-display); font-size: 1.2rem; letter-spacing: 0.08em; padding: 0.9rem 2.5rem; cursor: crosshair; transition: gap 0.2s; }
-    .btn-send:hover { gap: 1.5rem; }
+    .contacto-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contacto-left h3 {
+      font-family: var(--f-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .contacto-left h3 span {
+      color: var(--accent);
+    }
+
+    .contacto-left p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 320px;
+      line-height: 1.9;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--white);
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 0.9rem;
+      padding: 0.85rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--accent);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--muted);
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      background: var(--accent);
+      color: var(--black);
+      border: none;
+      font-family: var(--f-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      padding: 0.9rem 2.5rem;
+      cursor: pointer;
+      transition: gap 0.2s;
+    }
+
+    .btn-send:hover {
+      gap: 1.5rem;
+    }
 
     /* MARQUEE */
-    .big-divider { padding: 2.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
-    .big-divider-inner { display: flex; white-space: nowrap; animation: marquee 22s linear infinite; }
-    .big-divider-inner span { font-family: var(--f-display); font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.02em; padding: 0 1.5rem; flex-shrink: 0; }
-    .big-divider-inner span.outline { -webkit-text-stroke: 1px var(--white); color: transparent; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .big-divider {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .big-divider-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+
+    .big-divider-inner span {
+      font-family: var(--f-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 0.02em;
+      padding: 0 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .big-divider-inner span.outline {
+      -webkit-text-stroke: 1px var(--white);
+      color: transparent;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
 
     /* FOOTER */
-    footer { padding: 2rem 2.5rem 3.5rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
-    .footer-logo { font-family: var(--f-display); font-size: 2rem; letter-spacing: 0.05em; }
-    .footer-logo span { color: var(--accent); }
-    .footer-copy { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    footer {
+      padding: 2rem 2.5rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
     /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
 
     /* MOBILE */
     @media (max-width: 768px) {
-      nav { padding: 0 1.2rem; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 60px 0 36px 0; background: var(--black); padding: 2.5rem 1.5rem; gap: 2rem; border-top: 1px solid var(--border); z-index: 199; }
-      .nav-links.open a { font-size: 0.9rem; }
-      .nav-toggle { display: block; }
-      #inicio { padding: 80px 1.2rem 5rem; }
-      .hero-photo-frame { display: none; }
-      .hero-desc { text-align: left; }
-      section.main-section { padding: 4rem 1.2rem; }
-      .sobre-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
-      .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
-      .project-row { grid-template-columns: 40px 1fr auto; gap: 0.8rem; }
-      .proj-desc, .proj-tech { display: none; }
-      .redes-grid { grid-template-columns: 1fr; }
-      .contacto-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .contacto-left h3 { font-size: 3.5rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      nav {
+        padding: 0 1.2rem;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 60px 0 36px 0;
+        background: var(--black);
+        padding: 2.5rem 1.5rem;
+        gap: 2rem;
+        border-top: 1px solid var(--border);
+        z-index: 199;
+      }
+
+      .nav-links.open a {
+        font-size: 0.9rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      #inicio {
+        grid-template-columns: 1fr;
+        padding: 100px 1.2rem 5rem;
+        gap: 2rem;
+      }
+
+      .hero-photo-col {
+        display: none;
+      }
+
+      .hero-desc {
+        text-align: left;
+      }
+
+      section.main-section {
+        padding: 4rem 1.2rem;
+      }
+
+      .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat-item:nth-child(3) {
+        border-right: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+      }
+
+      .stat-item:nth-child(4) {
+        border-top: 1px solid var(--border);
+      }
+
+      .project-row {
+        grid-template-columns: 40px 1fr auto;
+        gap: 0.8rem;
+      }
+
+      .proj-desc,
+      .proj-tech {
+        display: none;
+      }
+
+      .redes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contacto-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contacto-left h3 {
+        font-size: 3.5rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-logo" href="#inicio">FB<span>.</span></a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#sobre">Sobre mí</a></li>
-    <li><a href="#conocimientos">Skills</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#redes">Redes</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <a class="nav-cta" href="#contacto">Contactame</a>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <nav>
+    <a class="nav-logo" href="#inicio">FB<span>.</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#conocimientos">Skills</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#redes">Redes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<!-- HERO -->
-<section id="inicio">
-  <div class="hero-photo-frame">
-    <!-- Para agregar tu foto: reemplazá el div de abajo por <img src="tu-foto.jpg" alt="Francisco Benitez" style="width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%)"> -->
-    <div class="hero-photo-placeholder">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Tu foto aquí
+  <section id="inicio">
+
+    <div class="hero-text-col">
+      <p class="hero-eyebrow">Full Stack Developer — Argentina</p>
+      <h1 class="hero-name">Francisco<br />Benitez</h1>
+
+      <div class="hero-title-row">
+        <p class="hero-role">Código que resuelve<br />problemas reales</p>
+        <p class="hero-desc">
+          Desarrollo software limpio, escalable y efectivo. Especializado en C#, SQL y sistemas de gestión empresarial.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-photo-col">
+      <img src="./Imagenes/Fotoperfil.jpg" alt="Foto de Francisco Benitez" title="FOTOPERFIL"
+        onerror="this.style.display='none'">
+    </div>
+
+  </section>
+
+  <div class="big-divider">
+    <div class="big-divider-inner">
+      <span>FULL STACK</span><span class="outline">DEVELOPER</span>
+      <span>C#</span><span class="outline">SQL</span>
+      <span>FULL STACK</span><span class="outline">DEVELOPER</span>
+      <span>C#</span><span class="outline">SQL</span>
+      <span>FULL STACK</span><span class="outline">DEVELOPER</span>
+      <span>C#</span><span class="outline">SQL</span>
+      <span>FULL STACK</span><span class="outline">DEVELOPER</span>
+      <span>C#</span><span class="outline">SQL</span>
     </div>
   </div>
-  <p class="hero-eyebrow">Full Stack Developer — Argentina</p>
-  <h1 class="hero-name">Francisco<br/>Benitez</h1>
-  <div class="hero-title-row">
-    <p class="hero-role">Código que resuelve<br/>problemas reales</p>
-    <p class="hero-desc">Desarrollo software limpio, escalable y efectivo. Especializado en C#, SQL y sistemas de gestión empresarial.</p>
-  </div>
-</section>
 
-<!-- MARQUEE 1 -->
-<div class="big-divider">
-  <div class="big-divider-inner">
-    <span>FULL STACK</span><span class="outline">DEVELOPER</span>
-    <span>C#</span><span class="outline">SQL</span>
-    <span>FULL STACK</span><span class="outline">DEVELOPER</span>
-    <span>C#</span><span class="outline">SQL</span>
-    <span>FULL STACK</span><span class="outline">DEVELOPER</span>
-    <span>C#</span><span class="outline">SQL</span>
-    <span>FULL STACK</span><span class="outline">DEVELOPER</span>
-    <span>C#</span><span class="outline">SQL</span>
-  </div>
-</div>
 
-<!-- SOBRE MÍ -->
-<section id="sobre" class="main-section reveal">
-  <div class="section-header">
-    <h2 class="section-title">Sobre mí</h2>
-    <span class="num-tag">01</span>
+  <section id="sobre" class="main-section reveal">
+    <div class="section-header">
+      <h2 class="section-title">Sobre mí</h2>
+      <span class="num-tag">01</span>
+    </div>
+    <div class="sobre-grid">
+      <div>
+        <p class="sobre-big-text">Programador apasionado por construir<br /><em>soluciones que duran.</em></p>
+      </div>
+      <div class="sobre-details">
+        <p>Soy <strong>Francisco Benitez</strong>, desarrollador Full Stack con foco en sistemas de gestión y
+          aplicaciones de escritorio. Me especializo en C#, C++ y SQL, construyendo herramientas que automatizan
+          procesos y generan valor real.</p>
+        <p>Me importa el código limpio, la arquitectura bien pensada y entregar en tiempo. Siempre buscando el
+          siguiente
+          desafío técnico.</p>
+        <p><strong>Ubicación:</strong> Argentina &nbsp;·&nbsp; <strong>Disponibilidad:</strong> Freelance / Relación
+          de
+          dependencia</p>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item"><span class="n">2+</span><span class="l">Años de experiencia</span></div>
+      <div class="stat-item"><span class="n">5+</span><span class="l">Proyectos terminados</span></div>
+      <div class="stat-item"><span class="n">3+</span><span class="l">Tecnologías core</span></div>
+      <div class="stat-item"><span class="n">∞</span><span class="l">Ganas de aprender</span></div>
+    </div>
+  </section>
+
+
+  <div class="big-divider">
+    <div class="big-divider-inner" style="animation-direction:reverse;">
+      <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
+      <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
+      <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
+      <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
+      <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
+      <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
+      <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
+      <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
+    </div>
   </div>
-  <div class="sobre-grid">
+
+
+  <section id="conocimientos" class="main-section reveal">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+      <span class="num-tag">02</span>
+    </div>
+    <table class="skills-table">
+      <tbody>
+        <tr>
+          <td class="td-num">01</td>
+          <td class="td-cat">Lenguajes</td>
+          <td class="td-tags">
+            <span>C#</span><span>C++</span><span>SQL</span><span>JavaScript</span><span>HTML</span><span>CSS</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="td-num">02</td>
+          <td class="td-cat">Backend &amp; DB</td>
+          <td class="td-tags"><span>.NET</span><span>SQL Server</span><span>MySQL</span><span>Entity Framework</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="td-num">03</td>
+          <td class="td-cat">Herramientas</td>
+          <td class="td-tags"><span>Git</span><span>GitHub</span><span>Visual Studio</span><span>VS Code</span></td>
+        </tr>
+        <tr>
+          <td class="td-num">04</td>
+          <td class="td-cat">Áreas</td>
+          <td class="td-tags"><span>Gestión empresarial</span><span>CRUD systems</span><span>Desktop
+              apps</span><span>API REST</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <section id="proyectos" class="main-section reveal">
+    <div class="section-header">
+      <h2 class="section-title">Proyectos</h2>
+      <span class="num-tag">03</span>
+    </div>
     <div>
-      <p class="sobre-big-text">Programador apasionado por construir<br/><em>soluciones que duran.</em></p>
+      <a class="project-row" href="https://github.com/Panchobb/GestionArticulos" target="_blank" rel="noopener"
+        data-img="https://panchobb.github.io/Portafolio/Imagenes/GestionArticulos.png">
+        <span class="proj-num">01</span>
+        <div class="proj-name">Gestión de Artículos</div>
+        <div class="proj-desc">Sistema de inventario hecho con SQL y C# para administrar artículos empresariales de
+          forma eficiente.</div>
+        <div class="proj-tech"><span>C#</span><span>SQL</span><span>.NET</span></div>
+        <span class="proj-arrow">↗</span>
+      </a>
+      <a class="project-row" href="https://github.com/Panchobb/TallerMecanico" target="_blank" rel="noopener"
+        data-img="https://panchobb.github.io/Portafolio/Imagenes/TallerMecanico.png">
+        <span class="proj-num">02</span>
+        <div class="proj-name">Taller Mecánico</div>
+        <div class="proj-desc">Sistema de gestión para talleres mecánicos en C++ con control de órdenes y clientes.
+        </div>
+        <div class="proj-tech"><span>C++</span><span>Desktop</span></div>
+        <span class="proj-arrow">↗</span>
+      </a>
     </div>
-    <div class="sobre-details">
-      <p>Soy <strong>Francisco Benitez</strong>, desarrollador Full Stack con foco en sistemas de gestión y aplicaciones de escritorio. Me especializo en C#, C++ y SQL, construyendo herramientas que automatizan procesos y generan valor real.</p>
-      <p>Me importa el código limpio, la arquitectura bien pensada y entregar en tiempo. Siempre buscando el siguiente desafío técnico.</p>
-      <p><strong>Ubicación:</strong> Argentina &nbsp;·&nbsp; <strong>Disponibilidad:</strong> Freelance / Relación de dependencia</p>
+  </section>
+
+
+  <section id="redes" class="main-section reveal" style="padding-bottom:0;">
+    <div class="section-header">
+      <h2 class="section-title">Redes</h2>
+      <span class="num-tag">04</span>
     </div>
-  </div>
-  <div class="stats-row">
-    <div class="stat-item"><span class="n">2+</span><span class="l">Años de experiencia</span></div>
-    <div class="stat-item"><span class="n">5+</span><span class="l">Proyectos terminados</span></div>
-    <div class="stat-item"><span class="n">3+</span><span class="l">Tecnologías core</span></div>
-    <div class="stat-item"><span class="n">∞</span><span class="l">Ganas de aprender</span></div>
-  </div>
-</section>
-
-<!-- MARQUEE 2 -->
-<div class="big-divider">
-  <div class="big-divider-inner" style="animation-direction:reverse;">
-    <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
-    <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
-    <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
-    <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
-    <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
-    <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
-    <span>GESTIÓN</span><span class="outline">SISTEMAS</span>
-    <span>BACKEND</span><span class="outline">BASES DE DATOS</span>
-  </div>
-</div>
-
-<!-- SKILLS -->
-<section id="conocimientos" class="main-section reveal">
-  <div class="section-header">
-    <h2 class="section-title">Skills</h2>
-    <span class="num-tag">02</span>
-  </div>
-  <table class="skills-table">
-    <tbody>
-      <tr>
-        <td class="td-num">01</td>
-        <td class="td-cat">Lenguajes</td>
-        <td class="td-tags"><span>C#</span><span>C++</span><span>SQL</span><span>JavaScript</span><span>HTML</span><span>CSS</span></td>
-      </tr>
-      <tr>
-        <td class="td-num">02</td>
-        <td class="td-cat">Backend &amp; DB</td>
-        <td class="td-tags"><span>.NET</span><span>SQL Server</span><span>MySQL</span><span>Entity Framework</span></td>
-      </tr>
-      <tr>
-        <td class="td-num">03</td>
-        <td class="td-cat">Herramientas</td>
-        <td class="td-tags"><span>Git</span><span>GitHub</span><span>Visual Studio</span><span>VS Code</span></td>
-      </tr>
-      <tr>
-        <td class="td-num">04</td>
-        <td class="td-cat">Áreas</td>
-        <td class="td-tags"><span>Gestión empresarial</span><span>CRUD systems</span><span>Desktop apps</span><span>API REST</span></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- PROYECTOS -->
-<section id="proyectos" class="main-section reveal">
-  <div class="section-header">
-    <h2 class="section-title">Proyectos</h2>
-    <span class="num-tag">03</span>
-  </div>
-  <div>
-    <a class="project-row" href="https://github.com/Panchobb/GestionArticulos" target="_blank" rel="noopener" data-img="https://panchobb.github.io/Portafolio/Imagenes/GestionArticulos.png">
-      <span class="proj-num">01</span>
-      <div class="proj-name">Gestión de Artículos</div>
-      <div class="proj-desc">Sistema de inventario hecho con SQL y C# para administrar artículos empresariales de forma eficiente.</div>
-      <div class="proj-tech"><span>C#</span><span>SQL</span><span>.NET</span></div>
-      <span class="proj-arrow">↗</span>
+  </section>
+  <div class="redes-grid" style="max-width:1200px;margin:0 auto 6rem;">
+    <a class="red-tile" href="https://www.linkedin.com/in/fran-benitez-/" target="_blank" rel="noopener">
+      <span class="red-platform">Trabajo &amp; carrera</span>
+      <div class="red-name">LinkedIn</div>
+      <span class="red-handle">@fran-benitez</span>
+      <span class="red-arrow">↗</span>
     </a>
-    <a class="project-row" href="https://github.com/Panchobb/TallerMecanico" target="_blank" rel="noopener" data-img="https://panchobb.github.io/Portafolio/Imagenes/TallerMecanico.png">
-      <span class="proj-num">02</span>
-      <div class="proj-name">Taller Mecánico</div>
-      <div class="proj-desc">Sistema de gestión para talleres mecánicos en C++ con control de órdenes y clientes.</div>
-      <div class="proj-tech"><span>C++</span><span>Desktop</span></div>
-      <span class="proj-arrow">↗</span>
+    <a class="red-tile" href="https://github.com/Panchobb" target="_blank" rel="noopener">
+      <span class="red-platform">Código &amp; proyectos</span>
+      <div class="red-name">GitHub</div>
+      <span class="red-handle">@Panchobb</span>
+      <span class="red-arrow">↗</span>
     </a>
   </div>
-</section>
 
-<!-- REDES -->
-<section id="redes" class="main-section reveal" style="padding-bottom:0;">
-  <div class="section-header">
-    <h2 class="section-title">Redes</h2>
-    <span class="num-tag">04</span>
-  </div>
-</section>
-<div class="redes-grid" style="max-width:1200px;margin:0 auto 6rem;">
-  <a class="red-tile" href="https://www.linkedin.com/in/fran-benitez-/" target="_blank" rel="noopener">
-    <span class="red-platform">Trabajo &amp; carrera</span>
-    <div class="red-name">LinkedIn</div>
-    <span class="red-handle">@fran-benitez</span>
-    <span class="red-arrow">↗</span>
-  </a>
-  <a class="red-tile" href="https://github.com/Panchobb" target="_blank" rel="noopener">
-    <span class="red-platform">Código &amp; proyectos</span>
-    <div class="red-name">GitHub</div>
-    <span class="red-handle">@Panchobb</span>
-    <span class="red-arrow">↗</span>
-  </a>
-</div>
 
-<!-- CONTACTO -->
-<section id="contacto" class="main-section reveal">
-  <div class="section-header">
-    <h2 class="section-title">Contacto</h2>
-    <span class="num-tag">05</span>
-  </div>
-  <div class="contacto-inner">
-    <div class="contacto-left">
-      <h3>¿Tenés un<br/><span>proyecto?</span><br/>Hablemos.</h3>
-      <p>Estoy disponible para proyectos freelance, oportunidades laborales y colaboraciones. Respondé en menos de 24 horas.</p>
+  <section id="contacto" class="main-section reveal">
+    <div class="section-header">
+      <h2 class="section-title">Contacto</h2>
+      <span class="num-tag">05</span>
     </div>
-    <form action="mailto:contacto@franbenitez.dev" method="POST" enctype="text/plain">
-      <div class="form-group">
-        <label class="form-label">Nombre</label>
-        <input type="text" name="nombre" placeholder="Tu nombre" required/>
+    <div class="contacto-inner">
+      <div class="contacto-left">
+        <h3>¿Tenés un<br /><span>proyecto?</span><br />Hablemos.</h3>
+        <p>Estoy disponible para proyectos freelance, oportunidades laborales y colaboraciones. Respondé en menos de
+          24
+          horas.</p>
       </div>
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" placeholder="tu@email.com" required/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Asunto</label>
-        <input type="text" name="asunto" placeholder="¿De qué se trata?"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Mensaje</label>
-        <textarea name="mensaje" placeholder="Contame tu idea..." required></textarea>
-      </div>
-      <button type="submit" class="btn-send">Enviar mensaje →</button>
-    </form>
+      <form action="mailto:contacto@franbenitez.dev" method="POST" enctype="text/plain">
+        <div class="form-group">
+          <label class="form-label">Nombre</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Asunto</label>
+          <input type="text" name="asunto" placeholder="¿De qué se trata?" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mensaje</label>
+          <textarea name="mensaje" placeholder="Contame tu idea..." required></textarea>
+        </div>
+        <button type="submit" class="btn-send">Enviar mensaje →</button>
+      </form>
+    </div>
+  </section>
+
+
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Francisco Benitez</span><span class="sep">—</span>
+      <span>Full Stack Developer</span><span class="sep">—</span>
+      <span>C# · SQL · C++</span><span class="sep">—</span>
+      <span>Argentina</span><span class="sep">—</span>
+      <span>Disponible para proyectos</span><span class="sep">—</span>
+      <span>Francisco Benitez</span><span class="sep">—</span>
+      <span>Full Stack Developer</span><span class="sep">—</span>
+      <span>C# · SQL · C++</span><span class="sep">—</span>
+      <span>Argentina</span><span class="sep">—</span>
+      <span>Disponible para proyectos</span><span class="sep">—</span>
+    </div>
   </div>
-</section>
 
-<footer>
-  <div class="footer-logo">FB<span>.</span></div>
-  <p class="footer-copy">© 2026 Francisco Benitez — All rights reserved</p>
-</footer>
+  <img class="proj-preview" id="proj-preview" src="" alt="" />
 
-<!-- BOTTOM TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span>Francisco Benitez</span><span class="sep">—</span>
-    <span>Full Stack Developer</span><span class="sep">—</span>
-    <span>C# · SQL · C++</span><span class="sep">—</span>
-    <span>Argentina</span><span class="sep">—</span>
-    <span>Disponible para proyectos</span><span class="sep">—</span>
-    <span>Francisco Benitez</span><span class="sep">—</span>
-    <span>Full Stack Developer</span><span class="sep">—</span>
-    <span>C# · SQL · C++</span><span class="sep">—</span>
-    <span>Argentina</span><span class="sep">—</span>
-    <span>Disponible para proyectos</span><span class="sep">—</span>
-  </div>
-</div>
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-<img class="proj-preview" id="proj-preview" src="" alt=""/>
-
-<script>
-  // Mobile menu
-  const toggle = document.getElementById('nav-toggle');
-  const links = document.getElementById('nav-links');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  // Project image follow cursor
-  const preview = document.getElementById('proj-preview');
-  document.querySelectorAll('.project-row[data-img]').forEach(row => {
-    row.addEventListener('mouseenter', () => { preview.src = row.dataset.img; preview.style.opacity = '1'; });
-    row.addEventListener('mouseleave', () => { preview.style.opacity = '0'; });
-    row.addEventListener('mousemove', e => {
-      preview.style.left = (e.clientX + 24) + 'px';
-      preview.style.top = Math.max(10, e.clientY - 80) + 'px';
+    const preview = document.getElementById('proj-preview');
+    document.querySelectorAll('.project-row[data-img]').forEach(row => {
+      row.addEventListener('mouseenter', () => { preview.src = row.dataset.img; preview.style.opacity = '1'; });
+      row.addEventListener('mouseleave', () => { preview.style.opacity = '0'; });
+      row.addEventListener('mousemove', e => {
+        preview.style.left = (e.clientX + 24) + 'px';
+        preview.style.top = Math.max(10, e.clientY - 80) + 'px';
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>
